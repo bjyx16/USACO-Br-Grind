@@ -1,5 +1,6 @@
 /*
 Not bad, just had to make sure the check array was stored correctly
+- bc integer miles & road is 100 miles, we know n,m<=100
 */
 #include <iostream>
 using namespace std;
