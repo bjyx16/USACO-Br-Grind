@@ -1,6 +1,7 @@
 /*
 - O(n^3) = 1e6
 - not as bad as expected, was a bit confusing to calculate the time complexity bc worried would TLE, but works with a brute force+recursive solution
+- remembered undefined behaviour yay
 */
 
 #include <iostream>
@@ -14,7 +15,7 @@ int rightCount=0;
 void leftChecker(int r, int pointer){
 	bool hasExploded=false;
 	int furthest;
-	if (pointer!=0){//undefined hebvaiour
+	if (pointer!=0){//undefined behaviour
 		for (int i=1;i<=r;++i){
 			if (hay[pointer]-r<=hay[pointer-i] && pointer-i>=0){
 				hasExploded=true;
@@ -36,7 +37,7 @@ void leftChecker(int r, int pointer){
 void rightChecker(int r, int pointer){
 	bool hasExploded=false;
 	int furthest;
-	if (pointer!=n-1){//undefined hebvaiour
+	if (pointer!=n-1){//undefined behaviour
 		for (int i=1;i<=r;++i){
 			if (hay[pointer]+r>=hay[pointer+i] && pointer+i<=n-1){
 				hasExploded=true;
