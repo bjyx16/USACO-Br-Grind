@@ -9,25 +9,26 @@
 #include <iterator>
 #include <algorithm>
 using namespace std;
+#define MAXN 105
 
 int n;
 int m;
 bool visit[101]={};
-vector< vector<int> > edges(10000+10);
+vector<int> edges[MAXN];
 
 void dfs(int curr){
 	visit[curr]=1;
-	for (vector<int>::iterator it=edges[curr].begin();it!=edges[curr].end();it++){
-		int x=*it;
-		//cout<<x<<" ";
+	for(auto x : edges[curr]) {
+		dfs(x);
+	}//for each loop! replace this:
+	/*for (vector<int>::iterator it=edges[curr].begin();it!=edges[curr].end();it++){
 		dfs(*it);
-	}
+	}*/
 }
 
 int main(){
-
-	freopen("factory.in","r",stdin);
-	freopen("factory.out","w",stdout);
+	//freopen("factory.in","r",stdin);
+	//freopen("factory.out","w",stdout);
 
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
@@ -35,7 +36,7 @@ int main(){
 	bool ans=true;
 	cin>>n;
 	//edges = set<int> [n];
-	edges = vector< vector<int> > (n);//why doesn;t vector<int> edges[n] work
+	//edges = vector< vector<int> > (n);//why doesn;t vector<int> edges[n] work
 
 	for (int i=0;i<n-1;i++){
 		int a,b;
@@ -47,7 +48,7 @@ int main(){
 		bool ans=true;
 		for (int i=0;i<n;i++){//test each node
 		    if (m==i){
-		         continue;
+		        continue;
 		    }
 		    for (int i=0;i<n;i++){
 			    visit[i]=0;
