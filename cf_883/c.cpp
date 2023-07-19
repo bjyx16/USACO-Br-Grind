@@ -1,11 +1,16 @@
+/*
+- sum/penalty variables overflowed
+*/
+
+
 #include <iostream>
 #include <vector>
 #include <utility>
 #include <algorithm>
 using namespace std;
 
-bool comp(const pair<int,int> &a,
-              const pair<int,int> &b)
+bool comp(const pair<long long,long long> &a,
+              const pair<long long,long long> &b)
 {
     if (a.first>b.first){
         return true;
@@ -17,29 +22,29 @@ bool comp(const pair<int,int> &a,
 }
 
 int main(){
-	int t;
+	long long t;
 	cin>>t;
 
-	for (int i=0;i<t;i++){
-		int n,m,h;
+	for (long long i=0;i<t;i++){
+		long long n,m,h;
 		cin>>n>>m>>h;
-		vector< pair<int,int> > score;
-		int rud1=0,rud2=0;
-		for (int j=0;j<n;++j){//number of players
-			vector<int> q(m);
-			vector<int> sum(m);
+		vector< pair<long long,long long> > score;
+		long long rud1=0,rud2=0;
+		for (long long j=0;j<n;++j){//number of players
+			vector<long long> q(m);
+			vector<long long> sum(m);
 			cin>>q[0];
-			for (int k=1;k<m;k++){
+			for (long long k=1;k<m;k++){
 				cin>>q[k];
 			}
 			sort(q.begin(),q.end());
 			sum[0]=q[0];
-			for (int k=1;k<m;k++){
+			for (long long k=1;k<m;k++){
 				sum[k]=sum[k-1]+q[k];
 			}
-			int time=h;
-			int pts=0,penalty=0;
-			for (int k=0;k<m;k++){
+			long long time=h;
+			long long pts=0,penalty=0;
+			for (long long k=0;k<m;k++){
 				time-=q[k];
 				if (time<0){
 					break;
@@ -63,14 +68,14 @@ int main(){
             cout<<it->first<<' '<<it->second<<"\n";
         }*/
 
-        int x=1,flag=0;
-        for (vector< pair<int,int> >::const_iterator it=score.begin();it!=score.end();it++){
+        long long x=1,flag=0;
+        for (vector< pair<long long,long long> >::const_iterator it=score.begin();it!=score.end();it++){
 			if (rud1>it->first){
 				cout<<x;
 				//cout<<"sdf";
 				flag++;
 				break;
-			}else if(rud1==it->first && rud2<= it->second){
+			}else if(rud1==it->first && rud2 <= it->second){
 			    cout<<x;
 			    //cout<<"asdifh";
 			    flag++;
