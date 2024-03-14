@@ -26,7 +26,7 @@ int main(){
 	int lo=1;
 	int hi=hay[n-1];
 	while(lo<hi){
-		int mid = (lo+hi)/2;
+		int mid = (lo+hi+1)/2; //add one because what if lo == hi, then no change in the while loop
 		//cout<<mid<<' ';
 		int count=0;
 		int blast=0;
